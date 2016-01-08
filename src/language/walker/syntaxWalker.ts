@@ -94,6 +94,10 @@ export class SyntaxWalker {
         this.walkChildren(node);
     }
 
+    protected visitDecorator(node: ts.Decorator) {
+        this.walkChildren(node);
+    }
+
     protected visitDefaultClause(node: ts.DefaultClause) {
         this.walkChildren(node);
     }
@@ -374,6 +378,10 @@ export class SyntaxWalker {
 
             case ts.SyntaxKind.DebuggerStatement:
                 this.visitDebuggerStatement(<ts.Statement> node);
+                break;
+
+            case ts.SyntaxKind.Decorator:
+                this.visitDecorator(<ts.Decorator> node);
                 break;
 
             case ts.SyntaxKind.DefaultClause:
